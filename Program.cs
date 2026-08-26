@@ -1,4 +1,5 @@
 using StudyNotes.Homework.Math.VectorBasics;
+using StudyNotes.Homework.Math.DotProduct;
 
 // ====== 数学课 第一轮：向量定义与基本运算 ======
 // 来源：docs/数学/01-向量定义与基本运算-VectorBasics.md 作业
@@ -6,3 +7,10 @@ using StudyNotes.Homework.Math.VectorBasics;
 // ==============================================
 
 Vector3Tests.Run();
+
+// ====== 数学课 第二轮：点积 ======
+// 来源：docs/数学/02-点积-DotProduct.md 作业
+// 步骤：填写 Homework/数学/第二轮-点积/DotProduct.cs 中的 TODO
+// =================================
+
+DotProductTests.Run();
