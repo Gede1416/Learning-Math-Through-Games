@@ -22,9 +22,9 @@ metadata:
 
 ### 阶段一：线性代数基础（2026-08-25 开始）
 教材：《3D Math Primer》Ch 1-6 + 《Essential Math》Ch 2-3
-- Day 1：向量定义与基本运算 🚧 — 开课：坏代码场景「斜向移动变快」（输入向量未归一化）已给出，苏格拉底问题待学生回答；作业 Vector3.cs（Magnitude/SqrMagnitude/Normalized/加减/标量乘）已布置
+- Day 1 ✅ 向量定义与基本运算（2026-08-26 完成）— 斜向移动加速 bug：input 模长 √2 → 速度 5√2 ≈ 7.07 m/s；标准解=归一化 v̂=v/|v|。纠错过程中学生两次偏离（sin/cos 方案、"单位向量的模长"表述），引导后自悟正确实现；作业 Vector3.cs 7/7 PASS。
 
-**下一步**：等学生回答 Day 1 苏格拉底问题 → 标准解 → 验收作业 → git commit + push。
+**下一步**：阶段一 Day 2 → 点积 Dot Product（Primer Ch 2.11），坏代码场景待给出，等学生回答。
 
 ## 整体路线（五阶段）
 

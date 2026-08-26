@@ -21,36 +21,42 @@ public struct Vector3
     // TODO 1：模长 |v| = sqrt(X² + Y² + Z²)（勾股定理推广到 3D）
     public float Magnitude()
     {
-        throw new NotImplementedException("TODO 1: 实现模长");
+        return MathF.Sqrt(SqrMagnitude());
     }
 
     // TODO 2：平方模长 X² + Y² + Z²（免开根号，常用于距离比较）
     public float SqrMagnitude()
     {
+        return X * X + Y * Y + Z * Z;
         throw new NotImplementedException("TODO 2: 实现平方模长");
     }
 
     // TODO 3：归一化 v̂ = v / |v|（返回单位向量）
     public Vector3 Normalized()
     {
+        var n = Magnitude();
+        return new Vector3(X / n, Y / n, Z / n);
         throw new NotImplementedException("TODO 3: 各分量除以模长");
     }
 
     // TODO 4：向量加法（首尾相连，分量相加）
     public static Vector3 operator +(Vector3 a, Vector3 b)
     {
+        return new Vector3(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
         throw new NotImplementedException("TODO 4: 实现加法");
     }
 
     // TODO 5：向量减法（分量相减）
     public static Vector3 operator -(Vector3 a, Vector3 b)
     {
+        return new Vector3(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
         throw new NotImplementedException("TODO 5: 实现减法");
     }
 
     // TODO 6：标量乘法（缩放：每个分量乘 s）
     public static Vector3 operator *(Vector3 a, float s)
     {
+        return new Vector3(a.X * s, a.Y * s, a.Z * s);
         throw new NotImplementedException("TODO 6: 实现标量乘法");
     }
 

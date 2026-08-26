@@ -63,11 +63,26 @@ public class PlayerMove : MonoBehaviour
 
 ## 你的回答
 
-（待填写，同步到 `00-我的回答.md`）
+- 正确部分：`input` 的模长在 1(直线)到 √2(斜向)之间变化，斜向最大速度 = 5 × √2 ≈ 7.07 m/s，比直线快 41%（"斜向移动加速 bug"）。
+- 纠错过程①：sin/cos 方案绕路——需先求角度 atan2 再重建向量，应直接让手头向量变单位向量。
+- 纠错过程②："使用单位向量的模长"表述有误——单位向量模长恒为 1，正确操作是**除以自身模长**。
 
 ## 标准解
 
-（待学生回答后补充：输入向量的模长 → 为什么 dir 不是单位向量 → 正确实现）
+**问题根源**：`dir = cam.right·h + cam.forward·v` 不是单位向量。
+- Unity 中 `cam.right`/`cam.forward` 是单位向量且互相垂直，所以 `|dir| = √(h² + v²)`。
+- 输入组合 (h, v) 有：直线 (1,0) → `|dir|=1`；斜向 (1,1) → `|dir|=√2`。
+- 实际速率 = `|dir| × moveSpeed`，斜向 = 5√2 ≈ 7.07 m/s。**与帧率无关**（`Time.deltaTime` 已保证帧率无关，这是输入组合的错，不是帧率的错）。
+
+**修复**：归一化——`v̂ = v / |v|`（Primer Ch 2.9）：
+
+```csharp
+var dir = (cam.right * input.x + cam.forward * input.z).normalized;
+// 等价：dir /= dir.magnitude;
+transform.position += dir * moveSpeed * Time.deltaTime;
+```
+
+**推广**：凡"方向 × 标量速率"的写法，前提都是方向已单位化。这是游戏代码里最常见的一类隐藏 bug（射击方向、物理弹道、AI 追踪都中过招）。
 
 ---
 
