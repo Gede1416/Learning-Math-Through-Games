@@ -16,6 +16,7 @@ public static class VectorMath
     // TODO 1：点积 a·b = ax*bx + ay*by + az*bz
     public static float Dot(Vector3 a, Vector3 b)
     {
+        return a.X * b.X + a.Y * b.Y + a.Z * b.Z;
         throw new NotImplementedException("TODO 1: 实现点积");
     }
 
