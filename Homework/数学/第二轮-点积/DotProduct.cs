@@ -24,6 +24,8 @@ public static class VectorMath
     // 提示：b̂ = b / |b|，用第一轮的 Magnitude/Normalized
     public static float ProjectScalar(Vector3 a, Vector3 b)
     {
+        var bn = b.Normalized();
+        return Dot(a, bn);
         throw new NotImplementedException("TODO 2: 实现投影长度");
     }
 
@@ -31,6 +33,11 @@ public static class VectorMath
     // 提示：先求 cosθ，再反余弦转角度；MathF.Acos 返回弧度
     public static float AngleDegrees(Vector3 a, Vector3 b)
     {
+        var dot = Dot(a, b);
+        var am = a.Magnitude();
+        var bm = b.Magnitude();
+        var cos = dot / am / bm;
+        return MathF.Acos(cos) / MathF.PI * 180;
         throw new NotImplementedException("TODO 3: 实现夹角计算");
     }
 
@@ -38,6 +45,12 @@ public static class VectorMath
     // 要求：结果与 to 的长度无关（距离 1 米和 10 米判定必须一致）
     public static bool IsInCone(Vector3 from, Vector3 to, float coneAngleDeg)
     {
+        var isInCone = false;
+        var fdir = from - new Vector3(1, 0, 0);
+        var todir = from - to;
+        var angle = AngleDegrees(fdir, todir);
+        isInCone = angle < coneAngleDeg;
+        return isInCone;
         throw new NotImplementedException("TODO 4: 实现锥形判定（先归一化！）");
     }
 }

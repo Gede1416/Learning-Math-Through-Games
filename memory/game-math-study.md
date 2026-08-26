@@ -22,9 +22,10 @@ metadata:
 
 ### 阶段一：线性代数基础（2026-08-25 开始）
 教材：《3D Math Primer》Ch 1-6 + 《Essential Math》Ch 2-3
-- Day 1 ✅ 向量定义与基本运算（2026-08-26 完成）— 斜向移动加速 bug：input 模长 √2 → 速度 5√2 ≈ 7.07 m/s；标准解=归一化 v̂=v/|v|。纠错过程中学生两次偏离（sin/cos 方案、"单位向量的模长"表述），引导后自悟正确实现；作业 Vector3.cs 7/7 PASS。
+- Day 1 ✅ 向量定义与基本运算（2026-08-26 完成）— 斜向移动加速 bug：input 模长 √2 → 速度 5√2 ≈ 7.07 m/s；标准解=归一化 v̂=v/|v|。作业 Vector3.cs 7/7 PASS。
+- Day 2 ✅ 点积 Dot Product（2026-08-27 完成）— 警戒锥形 bug：dot = |toPlayer|·cosθ 混入距离，5 米处 80° 误报、0.5 米处漏报；标准解=方向归一化后 cosθ 与距离无关。学生两次回答偏（"方向反了"误判、"0-1 过早/1-∞ 过晚"结论反），代码练习 IsInCone 自悟归一化；作业 DotProduct.cs 10/10 PASS（累计 17/17）。
 
-**下一步**：阶段一 Day 2 → 点积 Dot Product（Primer Ch 2.11），坏代码场景待给出，等学生回答。
+**下一步**：阶段一 Day 3 → 叉积 Cross Product（Primer Ch 2.12），坏代码场景待给出，等学生回答。
 
 ## 整体路线（五阶段）
 
