@@ -16,12 +16,20 @@ public static class CrossMath
     // TODO 1：叉积 a×b = (ay*bz-az*by, az*bx-ax*bz, ax*by-ay*bx)
     public static Vector3 Cross(Vector3 a, Vector3 b)
     {
+        var x = a.Y * b.Z - a.Z * b.Y;
+        var y = a.Z * b.X - a.X * b.Z;
+        var z = a.X * b.Y - a.Y * b.X;
+        return new Vector3(x, y, z);
         throw new NotImplementedException("TODO 1: 实现叉积");
     }
 
     // TODO 2：三角面法线 = Cross(v1-v0, v2-v0)（顶点按逆时针绕序时为外侧法线）
     public static Vector3 TriangleNormal(Vector3 v0, Vector3 v1, Vector3 v2)
     {
+        var dir1 = v1 - v0;
+        var dir2 = v2 - v0;
+        var n = Cross(dir1, dir2);
+        return n;
         throw new NotImplementedException("TODO 2: 实现面法线");
     }
 
@@ -31,6 +39,13 @@ public static class CrossMath
     // 提示：先算 cross = forward × toTarget，看 cross.y 的符号（Unity 左手系！）
     public static int Side(Vector3 forward, Vector3 toTarget)
     {
+        var cross = Cross(toTarget, forward).Y;
+        if (cross == 0)
+            return 0;
+        if (cross > 0)
+            return 1;
+        if (cross < 0)
+            return -1;
         throw new NotImplementedException("TODO 3: 实现左右判定");
     }
 }

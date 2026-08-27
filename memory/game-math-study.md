@@ -24,8 +24,9 @@ metadata:
 教材：《3D Math Primer》Ch 1-6 + 《Essential Math》Ch 2-3
 - Day 1 ✅ 向量定义与基本运算（2026-08-26 完成）— 斜向移动加速 bug：input 模长 √2 → 速度 5√2 ≈ 7.07 m/s；标准解=归一化 v̂=v/|v|。作业 Vector3.cs 7/7 PASS。
 - Day 2 ✅ 点积 Dot Product（2026-08-27 完成）— 警戒锥形 bug：dot = |toPlayer|·cosθ 混入距离，5 米处 80° 误报、0.5 米处漏报；标准解=方向归一化后 cosθ 与距离无关。学生两次回答偏（"方向反了"误判、"0-1 过早/1-∞ 过晚"结论反），代码练习 IsInCone 自悟归一化；作业 DotProduct.cs 10/10 PASS（累计 17/17）。
+- Day 3 ✅ 叉积 Cross Product（2026-08-28 完成）— 左右转向 bug：Unity 左手系下 forward×toPlayer 的 y>0 ⟺ 玩家在右，分支映射反了；标准解=交换操作数或翻转分支。学生回答偏（"共线没判断"边缘情况有效但非主因、"顺序从右到左"表述乱），通过实现 Side（交换操作数）自悟符号映射；概念追问"参考系/手性"已澄清（手性是坐标系属性，差异来自绕序约定与轴摆放映射）；作业 CrossProduct.cs 7/7 PASS（累计 24/24）。
 
-**下一步**：阶段一 Day 3 → 叉积 Cross Product（Primer Ch 2.12），坏代码场景待给出，等学生回答。
+**下一步**：阶段一 Day 4 → 矩阵定义与基本运算（Primer Ch 4），坏代码场景待给出，等学生回答。
 
 ## 整体路线（五阶段）
 
