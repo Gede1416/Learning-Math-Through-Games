@@ -49,7 +49,7 @@ public static class CrossProductTests
         AssertV("y×x == -z（交换反号）", CrossMath.Cross(y, x), new Vector3(0, 0, -1));
         AssertV("x×x == 0", CrossMath.Cross(x, x), new Vector3(0, 0, 0));
         AssertF("|(3,0,0)×(0,4,0)| == 12（面积）", CrossMath.Cross(new Vector3(3, 0, 0), new Vector3(0, 4, 0)).Magnitude(), 12f);
-        AssertF("cross·a == 0（垂直）", CrossMath.DotHelper(CrossMath.Cross(new Vector3(1, 2, 3), new Vector3(4, 5, 6)), new Vector3(1, 2, 3)), 0f);
+        AssertF("cross·a == 0（垂直）", CrossProductTests.DotHelper(CrossMath.Cross(new Vector3(1, 2, 3), new Vector3(4, 5, 6)), new Vector3(1, 2, 3)), 0f);
         // TODO 2：面法线（右手系 CCW 绕序）
         AssertV("TriangleNormal(0,0,0)(1,0,0)(0,1,0) == +z",
             CrossMath.TriangleNormal(new Vector3(0, 0, 0), new Vector3(1, 0, 0), new Vector3(0, 1, 0)), z);

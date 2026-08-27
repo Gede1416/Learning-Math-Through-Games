@@ -1,1 +1,0 @@
-float dot = Vector3.Dot(facing, toPlayer);
