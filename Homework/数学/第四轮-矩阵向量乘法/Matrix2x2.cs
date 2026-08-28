@@ -9,11 +9,29 @@ public readonly record struct Matrix2x2(float M00, float M01, float M10, float M
 {
     // TODO 1：返回 M × v；每个结果分量 = 矩阵对应行与 v 的点积
     public Vector2 Multiply(Vector2 v)
-        => throw new NotImplementedException("TODO 1: 实现矩阵乘列向量");
+    {
+        var xt = v.X * M00 + v.Y * M01;
+        var yt = v.X * M10 + v.Y * M11;
+        return new Vector2(xt, yt);
+    }
+    //=> throw new NotImplementedException("TODO 1: 实现矩阵乘列向量");
 
     // TODO 2：构造逆时针旋转 degrees 的矩阵 [cos -sin; sin cos]
     public static Matrix2x2 RotationDegrees(float degrees)
-        => throw new NotImplementedException("TODO 2: 构造旋转矩阵");
+    {
+        var h = degrees / 360 * 2 * MathF.PI;
+        var sin = MathF.Sin(h);
+        var cos = MathF.Cos(h);
+
+        return new Matrix2x2
+        {
+            M00 = cos,
+            M01 = -sin,
+            M10 = sin,
+            M11 = cos
+        };
+    }
+    //=> throw new NotImplementedException("TODO 2: 构造旋转矩阵");
 }
 
 public static class Matrix2x2Tests
