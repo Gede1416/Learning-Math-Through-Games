@@ -3,6 +3,7 @@ using StudyNotes.Homework.Math.DotProduct;
 using StudyNotes.Homework.Math.CrossProduct;
 using StudyNotes.Homework.Math.MatrixVectorMultiplication;
 using StudyNotes.Homework.Math.Stage1Exam;
+using StudyNotes.Homework.Math.LinearTransform;
 
 // ====== 数学课 第一轮：向量定义与基本运算 ======
 // 来源：docs/数学/01-向量定义与基本运算-VectorBasics.md 作业
@@ -37,4 +38,11 @@ using StudyNotes.Homework.Math.Stage1Exam;
 // 当前默认只运行本轮测试
 // ==========================================
 
-Stage1ExamTests.Run();
+// Stage1ExamTests.Run(); // 历史课程：仅在明确要求回归测试时启用
+
+// ====== 数学课 第六轮：线性变换与错切 ======
+// 来源：docs/数学/06-线性变换与错切-LinearTransformShear.md
+// 当前默认只运行本轮测试
+// ==========================================
+
+LinearTransformTests.Run();
