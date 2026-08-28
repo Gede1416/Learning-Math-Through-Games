@@ -1,9 +1,53 @@
 // 第四轮作业：矩阵与列向量相乘（5-10 分钟）
 using System;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 
 namespace StudyNotes.Homework.Math.MatrixVectorMultiplication;
 
-public readonly record struct Vector2(float X, float Y);
+public readonly record struct Vector2(float X, float Y)
+{
+    // 向量平方模
+    public float Super()
+    {
+        return X * X + Y * Y;
+    }
+    // 向量值
+    public float MSuper()
+    {
+        return MathF.Sqrt(Super());
+    }
+
+    public static float Dot(Vector2 a, Vector2 b)
+    {
+        return a.X * b.X + a.Y * b.Y;
+    }
+
+    public static float Cos(Vector2 a, Vector2 b)
+    {
+        var d = Dot(a, b) / a.MSuper() / b.MSuper();
+        return d;
+    }
+
+    public static float Cross(Vector2 a, Vector2 b)
+    {
+        return a.X * b.Y - a.Y * b.X;
+    }
+
+    public static int LRF(Vector2 a, Vector2 b)
+    {
+        int res = 0;
+        var rl = Cross(a, b);
+        if (rl > 0)
+            res = 1;
+        if (rl < 0)
+            res = -1;
+        return res;
+    }
+
+
+    // x
+}
 
 public readonly record struct Matrix2x2(float M00, float M01, float M10, float M11)
 {

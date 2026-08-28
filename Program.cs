@@ -2,6 +2,7 @@ using StudyNotes.Homework.Math.VectorBasics;
 using StudyNotes.Homework.Math.DotProduct;
 using StudyNotes.Homework.Math.CrossProduct;
 using StudyNotes.Homework.Math.MatrixVectorMultiplication;
+using StudyNotes.Homework.Math.Stage1Exam;
 
 // ====== 数学课 第一轮：向量定义与基本运算 ======
 // 来源：docs/数学/01-向量定义与基本运算-VectorBasics.md 作业
@@ -29,4 +30,11 @@ using StudyNotes.Homework.Math.MatrixVectorMultiplication;
 // 步骤：填写 Homework/数学/第四轮-矩阵向量乘法/Matrix2x2.cs 中的 TODO
 // ===========================================
 
-Matrix2x2Tests.Run();
+// Matrix2x2Tests.Run(); // 历史课程：仅在明确要求回归测试时启用
+
+// ====== 数学课 第五轮：阶段一综合小考 ======
+// 来源：docs/数学/05-阶段一综合小考-Stage1Exam.md
+// 当前默认只运行本轮测试
+// ==========================================
+
+Stage1ExamTests.Run();
