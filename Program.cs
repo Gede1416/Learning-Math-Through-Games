@@ -4,6 +4,7 @@ using StudyNotes.Homework.Math.CrossProduct;
 using StudyNotes.Homework.Math.MatrixVectorMultiplication;
 using StudyNotes.Homework.Math.Stage1Exam;
 using StudyNotes.Homework.Math.LinearTransform;
+using StudyNotes.Homework.Math.HomogeneousTransform;
 
 // ====== 数学课 第一轮：向量定义与基本运算 ======
 // 来源：docs/数学/01-向量定义与基本运算-VectorBasics.md 作业
@@ -45,4 +46,11 @@ using StudyNotes.Homework.Math.LinearTransform;
 // 当前默认只运行本轮测试
 // ==========================================
 
-LinearTransformTests.Run();
+// LinearTransformTests.Run(); // 历史课程：仅在明确要求回归测试时启用
+
+// ====== 数学课 第七轮：平移与齐次坐标 ======
+// 来源：docs/数学/07-平移与齐次坐标-HomogeneousCoordinates.md
+// 当前默认只运行本轮测试
+// ==========================================
+
+Mat4x4Tests.Run();
