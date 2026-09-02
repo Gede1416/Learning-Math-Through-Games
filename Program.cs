@@ -6,6 +6,7 @@ using StudyNotes.Homework.Math.Stage1Exam;
 using StudyNotes.Homework.Math.LinearTransform;
 using StudyNotes.Homework.Math.HomogeneousTransform;
 using StudyNotes.Homework.Math.HomogeneousCoordinates;
+using StudyNotes.Homework.Math.TransformComposition;
 
 // ====== 数学课 第一轮：向量定义与基本运算 ======
 // 来源：docs/数学/01-向量定义与基本运算-VectorBasics.md 作业
@@ -55,4 +56,11 @@ using StudyNotes.Homework.Math.HomogeneousCoordinates;
 // ==========================================
 
 // Mat4x4Tests.Run(); // 远端备用扩展框架：包含下一课的矩阵组合，当前不启用
-HomogeneousCoordinatesTests.Run();
+// HomogeneousCoordinatesTests.Run(); // 历史课程：仅在明确要求回归测试时启用
+
+// ====== 数学课 第八轮：变换组合与顺序 ======
+// 来源：docs/数学/08-变换组合与顺序-TransformComposition.md
+// 当前默认只运行本轮测试
+// ========================================
+
+TransformCompositionTests.Run();
