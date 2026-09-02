@@ -88,7 +88,7 @@ forward × toPlayer = (0,0,1) × (-1,0,0) = (0·0−1·0, 1·(−1)−0·0, 0·0
 
 ## 作业（5-10 分钟）
 
-实现 `Homework/数学/第三轮-叉积/CrossProduct.cs` 中的 TODO：
+实现 `Homework/数学/03-叉积/CrossProduct.cs` 中的 TODO：
 叉积 `Cross` / 面法线 `TriangleNormal` / 左右判定 `Side`，
 并通过 `CrossProductTests` 的断言。
 

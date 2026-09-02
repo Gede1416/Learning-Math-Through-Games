@@ -92,7 +92,7 @@ if (dot > Mathf.Cos(alertAngle * Mathf.Deg2Rad)) Alert();
 
 ## 作业（5-10 分钟）
 
-实现 `Homework/数学/第二轮-点积/DotProduct.cs` 中的 TODO：
+实现 `Homework/数学/02-点积/DotProduct.cs` 中的 TODO：
 点积 `Dot` / 投影长度 `ProjectScalar` / 夹角 `AngleDegrees` / 修复警戒判定 `IsInCone`，
 并通过 `DotProductTests` 的断言。
 

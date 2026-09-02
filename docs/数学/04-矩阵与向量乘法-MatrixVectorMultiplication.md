@@ -129,7 +129,7 @@ return new Vector2(
 
 ## 作业（5–10 分钟）
 
-实现 `Homework/数学/第四轮-矩阵向量乘法/Matrix2x2.cs` 中的两个 TODO：
+实现 `Homework/数学/04-矩阵向量乘法/Matrix2x2.cs` 中的两个 TODO：
 
 1. `Multiply`：计算 `M × v`。
 2. `RotationDegrees`：构造 2D 逆时针旋转矩阵。

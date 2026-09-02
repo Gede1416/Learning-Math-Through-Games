@@ -88,7 +88,7 @@ transform.position += dir * moveSpeed * Time.deltaTime;
 
 ## 作业（5-10 分钟）
 
-实现 `Homework/数学/第一轮-向量基本运算/Vector3.cs` 中的 TODO：
+实现 `Homework/数学/01-向量基本运算/Vector3.cs` 中的 TODO：
 模长 `Magnitude` / 平方模长 `SqrMagnitude` / 归一化 `Normalized` / 加法 / 减法 / 标量乘法，
 并通过 `Vector3Tests` 的断言。
 
