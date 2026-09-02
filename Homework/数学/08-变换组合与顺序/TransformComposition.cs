@@ -7,6 +7,7 @@ namespace StudyNotes.Homework.Math.TransformComposition;
 
 public static class Composition3D
 {
+    // 项目统一约定：+X 右、+Y 上、+Z 前；+90° 时 +Z→+X、+X→-Z
     public static Matrix4x4 RotationY(float degrees)
     {
         float r = degrees * MathF.PI / 180f;

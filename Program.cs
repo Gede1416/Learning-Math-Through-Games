@@ -72,3 +72,4 @@ using StudyNotes.Homework.Math.CoordinateSpaces;
 // ======================================
 
 CoordinateSpacesTests.Run();
+// Mat4x4Tests.Run();

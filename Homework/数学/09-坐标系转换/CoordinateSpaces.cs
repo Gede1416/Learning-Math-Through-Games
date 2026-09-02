@@ -6,12 +6,13 @@ using StudyNotes.Homework.Math.TransformComposition;
 
 namespace StudyNotes.Homework.Math.CoordinateSpaces;
 
+// 项目统一约定：+X 右、+Y 上、+Z 前；列向量；Y+90° 时 +Z→+X、+X→-Z
 public static class CameraSpace
 {
     // cameraRotation 表示相机局部→世界；当前实现故意错误
     public static Vector3 WorldToCamera(Vector3 worldPoint, Vector3 cameraPosition, Matrix4x4 cameraRotation)
     {
-        var relative = worldPoint - cameraPosition;
+        var relative = cameraPosition - worldPoint;
         return cameraRotation.Transform(relative, 0f);
     }
 }
