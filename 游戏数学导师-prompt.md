@@ -67,6 +67,8 @@
 
 16. **三维坐标约定（强制）**：项目数学层默认 `+X` 向右、`+Y` 向上、`+Z` 向前，并使用列向量 `v'=M·v`，组合变换从右向左执行。绕 Y 轴 `+90°` 必须满足 `+Z→+X`、`+X→-Z`，即 `(x,y,z)→(z,y,-x)`。矩阵的内存行/列主序必须与数学乘法约定分开说明。除非课程专门比较不同坐标系，否则代码、测试、手算和笔记不得切换约定；任何例外都要显式标注，并用基向量映射校验。
 
+17. **矩阵 API 唯一来源（强制）**：项目只保留 `StudyNotes.Homework.Math.LinearAlgebra.Matrix4x4`，禁止再创建 `Mat4x4` 等重复类型或在课程文件中各自实现旋转矩阵工厂。创建接口使用 `Identity`、`CreateTranslation`、`CreateRotationYDegrees`；点与方向分别使用实例 `TransformPoint`、`TransformDirection`，不得在业务/作业代码中公开裸 `Transform(v,w)`；矩阵积使用 `Multiply(left,right)` 并明确表示 `left·right`；`Transpose()` 只表示转置，只有纯旋转时才可作为逆旋转。
+
 ## 项目结构约定
 - **笔记文件**：`docs/数学/{编号}-{中文名}-{英文名}.md`（如 `docs/数学/03-四元数-Quaternion.md`）
 - **代码文件**：放在 `MathLibrary/` 或 `Models/` 下，namespace `StudyNotes.Math`
@@ -97,10 +99,10 @@
 # 当前学习状态（本次会话生效）
 - 已完成章节：阶段一全部完成 ✅；Day 5 综合小考本轮 6/6 PASS。
 - 已完成：阶段二 Day 1 ✅ 线性变换与错切矩阵，本轮 4/4 PASS；学生掌握矩阵列是变换后的基向量。
-- 已完成：阶段二 Day 2 ✅ 平移与齐次坐标，本轮 3/3 PASS；学生已用通用 Transform(v,w) 正确表达点 w=1、方向 w=0。
+- 已完成：阶段二 Day 2 ✅ 平移与齐次坐标，本轮 3/3 PASS；学生掌握点 w=1、方向 w=0，后续统一 API 已用 TransformPoint/TransformDirection 封装语义。
 - 已完成：阶段二 Day 3 ✅ 变换组合与顺序，本轮 3/3 PASS；学生掌握列向量约定下 `T·R` 为先旋转后平移，并修正 localPoint 的 w=1 语义。
-- **当前起点**：阶段二 Day 4 → **模型/世界/相机坐标系转换**，前方目标转相机局部坐标场景。
-- 正在教学：学生第一次尝试把相对向量反写为 `cameraPosition-worldPoint`，当前 2/3 PASS；无旋转案例期望 `(2,0,0)`、实际 `(-2,0,0)`，另两个案例由两个方向错误抵消而偶然通过。下一次先引导恢复“终点减起点”，不直接代写完整答案。
-- 插曲：第七轮 Mat4x4 扩展练习首次 5/6 PASS；现已统一三维坐标与 RotateY 测试，学生修正 TODO 6 为 `translation + rot·localOffset`，独立复验 6/6 PASS。当前 Day 4 主线不变。
-- 当前测试入口只启用第九轮 3 项测试，历史测试默认保持停用。
+- 已完成：阶段二 Day 4 ✅ 坐标系转换，本轮 4/4 PASS；学生掌握 `worldPoint-cameraPosition` 是方向，以及纯旋转 world→camera 使用 `R⁻¹=Rᵀ`。
+- 已完成：阶段二全部课程 ✅。按用户要求将 `Matrix4x4/Mat4x4` 合并为唯一不可变 `Matrix4x4`，统一语义化方法；第七轮扩展迁移后 6/6 PASS。
+- **下一起点**：阶段三 Day 1 → 欧拉角与旋转顺序，尚未开课。
+- 当前测试入口只启用第九轮 4 项测试，历史测试默认保持停用。
 - 请继续教学。

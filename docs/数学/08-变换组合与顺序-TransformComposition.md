@@ -7,7 +7,7 @@
 
 ## 坏代码场景（苏格拉底）
 
-角色位于世界坐标 `(10,0,0)`。武器尖端的局部坐标是 `(1,0,0)`，角色绕 Y 轴旋转 `90°`。期望武器先随角色自转，再移动到角色的世界位置。
+角色位于世界坐标 `(10,0,0)`。武器尖端的局部坐标是 `(1,0,0)`，角色绕 Y 轴旋转 `90°`。期望武器先随角色自转，再移动到角色的世界位置。以下坏代码使用的是当时尚未合并的旧 API：
 
 ```csharp
 public static Vector3 LocalToWorld(
@@ -54,7 +54,7 @@ var rotationed = rotation.Transform(localPoint, 0f);
 
 ## 第二次实现
 
-学生将局部武器尖端按点处理：
+学生将局部武器尖端按点处理，当时的实现为：
 
 ```csharp
 var rotated = rotation.Transform(localPoint, 1f);
@@ -62,6 +62,22 @@ var world = translation.Transform(rotated, 1f);
 ```
 
 顺序与齐次语义均正确，本轮测试 **3/3 PASS**。
+
+统一 `Matrix4x4` 后，最终实现不再裸传 `w`，方法名也明确说明输入是局部点：
+
+```csharp
+public static Vector3 TransformLocalPointToWorld(
+    Vector3 localPoint,
+    Matrix4x4 localRotation,
+    Vector3 worldPosition)
+{
+    var translation = Matrix4x4.CreateTranslation(worldPosition);
+    var localToWorld = Matrix4x4.Multiply(translation, localRotation);
+    return localToWorld.TransformPoint(localPoint);
+}
+```
+
+旋转矩阵统一由 `Matrix4x4.CreateRotationYDegrees` 创建，课程代码不再各自维护一份 `RotationY`。
 
 ---
 
