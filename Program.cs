@@ -5,6 +5,7 @@ using StudyNotes.Homework.Math.MatrixVectorMultiplication;
 using StudyNotes.Homework.Math.Stage1Exam;
 using StudyNotes.Homework.Math.LinearTransform;
 using StudyNotes.Homework.Math.HomogeneousTransform;
+using StudyNotes.Homework.Math.HomogeneousCoordinates;
 
 // ====== 数学课 第一轮：向量定义与基本运算 ======
 // 来源：docs/数学/01-向量定义与基本运算-VectorBasics.md 作业
@@ -53,4 +54,5 @@ using StudyNotes.Homework.Math.HomogeneousTransform;
 // 当前默认只运行本轮测试
 // ==========================================
 
-Mat4x4Tests.Run();
+// Mat4x4Tests.Run(); // 远端备用扩展框架：包含下一课的矩阵组合，当前不启用
+HomogeneousCoordinatesTests.Run();
