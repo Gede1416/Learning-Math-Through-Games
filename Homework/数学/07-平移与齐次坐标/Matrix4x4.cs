@@ -27,15 +27,11 @@ public readonly record struct Matrix4x4(
     // +90° 时 +Y→+Z、+Z→-Y；方法名明确角度单位为度。
     public static Matrix4x4 CreateRotationXDegrees(float angleDegrees)
     {
-        float radians = angleDegrees * MathF.PI / 180f;
-        float cosine = MathF.Cos(radians);
-        float sine = MathF.Sin(radians);
-
-        return new Matrix4x4(
-            1, 0, 0, 0,
-            0, cosine, -sine, 0,
-            0, sine, cosine, 0,
-            0, 0, 0, 1);
+        // TODO（由学生完成）：
+        // 1. 把角度转换成弧度；
+        // 2. 计算 sin/cos；
+        // 3. 按项目坐标约定填写 X 轴旋转矩阵。
+        return Identity; // 临时占位：保证项目可编译，非零角测试应失败。
     }
 
     // +90° 时 +Z→+X、+X→-Z；方法名明确角度单位为度。

@@ -75,7 +75,7 @@ using StudyNotes.Homework.Math.EulerAngles;
 
 // ====== 数学课 第十轮：欧拉角与万向锁 ======
 // 来源：docs/数学/10-欧拉角与万向锁-EulerAngles.md
-// 当前小节：世界 Y 偏航 + 相机局部 X 俯仰的旋转顺序
+// 当前步骤：先完成统一数学工具 CreateRotationXDegrees
 // ==========================================
 
-EulerAnglesTests.Run();
+RotationXFactoryTests.Run();

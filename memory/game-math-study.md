@@ -42,9 +42,9 @@ metadata:
 
 **第七轮扩展练习插曲（2026-09-02）**：学生完善旧 `Mat4x4` 后首次单独测试 5/6 PASS。TODO 6 最初旋转 translation 后再加未旋转的 localOffset，同时旧测试骨架混用了相反的 Y 轴旋转方向。统一坐标约定并修正为 `translation + rot·localOffset` 后独立复验 6/6。随后按用户要求将 `Mat4x4` 与 `Matrix4x4` 合并为唯一不可变类型；扩展测试迁到 `07-平移齐次坐标-扩展/Matrix4x4ExtendedTests.cs`，迁移后仍 **6/6 PASS**。
 
-**矩阵 API 统一决策（2026-09-02）**：唯一类型为 `StudyNotes.Homework.Math.LinearAlgebra.Matrix4x4`。创建方法使用 `Identity`、`CreateTranslation` 及名称包含轴与单位的旋转工厂；阶段三 Day 1 已加入 `CreateRotationXDegrees`，与既有 `CreateRotationYDegrees` 共用同一坐标约定。变换固定为实例 `TransformPoint/TransformDirection`；矩阵积使用 `Multiply(left,right)`；逆旋转显式写 `Transpose()`。删除重复 `Mat4x4`、各课程自建轴旋转工厂、公开裸 `Transform(v,w)` 和含三个不同语义参数的静态 TransformPoint。
+**矩阵 API 统一决策（2026-09-02）**：唯一类型为 `StudyNotes.Homework.Math.LinearAlgebra.Matrix4x4`。已有 `Identity`、`CreateTranslation`、`CreateRotationYDegrees`；阶段三需要的 `CreateRotationXDegrees` 属于学生实现任务，在契约测试通过前不得记录为已完成。以后新增轴旋转或其他公共数学工具时，导师只提供签名、TODO、契约说明、未完成占位和测试，由学生完成实现。变换固定为实例 `TransformPoint/TransformDirection`；矩阵积使用 `Multiply(left,right)`；逆旋转显式写 `Transpose()`。删除重复 `Mat4x4`、各课程自建轴旋转工厂、公开裸 `Transform(v,w)` 和含三个不同语义参数的静态 TransformPoint。
 
-**正在进行：阶段三 Day 1 → 欧拉角与万向锁（2026-09-03 开课）**。第一小节只处理旋转顺序：FPS 相机使用世界 Y yaw 与相机局部 X pitch，坏代码组合为 `Rx·Ry`。单轴输入均正常，但 `yaw=+90°、pitch=-45°` 时期望前方约 `(0.7071,0.7071,0)`、实际约 `(1,0,0)`；当前第十轮 **4/5 PASS**。等待学生手算最右侧矩阵的作用顺序、yaw 后的局部 X 世界方向，并修正组合；万向锁留到本小节完成后。
+**正在进行：阶段三 Day 1 → 欧拉角与万向锁（2026-09-03）**。当前教学门为“学生编写数学工具”：学生需要实现 `Matrix4x4.CreateRotationXDegrees`，导师只维护签名、TODO、契约说明、未完成占位、工具测试与测试入口。通过后才进入 FPS 相机旋转顺序的错误使用代码 → 导师提问 → 学生回答 → 学生修整代码。先前提前给出的组合场景已撤回，不作为当前任务；万向锁尚未开始。
 
 **教学类型决策（2026-08-29）**：阶段二 Day 1 使用 `Vector2 + Matrix2x2` 只是为了把错切降维到 X/Y 平面，突出基向量列的几何意义，不代表后续课程改走二维路线。自 Day 2 起恢复项目已有 `Vector3`，引入 `Matrix4x4` 教平移与齐次坐标；避免继续扩展重复的 Vector2 数学库，并逐步对接 Unity 式三维变换。
 
@@ -58,7 +58,8 @@ metadata:
 
 ## 教学方式与约定
 
-- 苏格拉底式：坏代码（≤30 行）→ 回答 → 标准解；每次聚焦一个概念
+- 苏格拉底式：不需新增数学工具时，从坏代码（≤30 行）→ 提问与回答 → 学生修整 → 标准总结开始；每次聚焦一个概念
+- 固定流程：学生实现新增数学工具并通过契约测试 → 导师展示错误使用代码 → 导师提问并等待 → 学生回答 → 学生修整代码；导师不得提前实现新增数学工具或代替学生修整代码
 - 游戏场景绑定；引用教材原文（标注章节）；每节以追问落地结尾
 - 作业：`Homework/数学/{两位数字序号}-{概念}/{类名}.cs`，序号补零为 `01`、`02`……以便排序；5-10 分钟
 - 笔记：docs/数学/{编号}-{中文}-{英文}.md
@@ -68,4 +69,4 @@ metadata:
 
 **Why:** 用户希望按 Milo Yip 书单体系系统补齐游戏开发数学，与软件工程学习（[[software-engineering-study]]）同一套教学法。
 
-**How to apply:** 按用户节奏推进，每次聚焦一个概念。当前为阶段三 Day 1 第一小节“欧拉角旋转顺序”，等待学生回答 `Rx·Ry·forward` 的具体结果与 yaw 后局部 X 轴的世界方向；默认入口只运行第十轮 5 项测试。顺序修正后再进入万向锁。
+**How to apply:** 当前停在阶段三 Day 1 的数学工具实现门。收到“写好了”后，先检查并只运行 `CreateRotationXDegrees` 契约测试；失败时只给定位与子问题，成功后才创建并启用 FPS 相机的错误旋转顺序场景并提问。学生回答后仍由学生修改场景代码，最终通过测试才结课。
