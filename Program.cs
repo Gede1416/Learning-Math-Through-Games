@@ -7,6 +7,7 @@ using StudyNotes.Homework.Math.LinearTransform;
 using StudyNotes.Homework.Math.HomogeneousCoordinates;
 using StudyNotes.Homework.Math.TransformComposition;
 using StudyNotes.Homework.Math.CoordinateSpaces;
+using StudyNotes.Homework.Math.EulerAngles;
 
 // ====== 数学课 第一轮：向量定义与基本运算 ======
 // 来源：docs/数学/01-向量定义与基本运算-VectorBasics.md 作业
@@ -70,4 +71,11 @@ using StudyNotes.Homework.Math.CoordinateSpaces;
 // 当前默认只运行本轮测试
 // ======================================
 
-CoordinateSpacesTests.Run();
+// CoordinateSpacesTests.Run(); // 历史课程：仅在明确要求回归测试时启用
+
+// ====== 数学课 第十轮：欧拉角与万向锁 ======
+// 来源：docs/数学/10-欧拉角与万向锁-EulerAngles.md
+// 当前小节：世界 Y 偏航 + 相机局部 X 俯仰的旋转顺序
+// ==========================================
+
+EulerAnglesTests.Run();

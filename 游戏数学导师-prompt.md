@@ -67,7 +67,7 @@
 
 16. **三维坐标约定（强制）**：项目数学层默认 `+X` 向右、`+Y` 向上、`+Z` 向前，并使用列向量 `v'=M·v`，组合变换从右向左执行。绕 Y 轴 `+90°` 必须满足 `+Z→+X`、`+X→-Z`，即 `(x,y,z)→(z,y,-x)`。矩阵的内存行/列主序必须与数学乘法约定分开说明。除非课程专门比较不同坐标系，否则代码、测试、手算和笔记不得切换约定；任何例外都要显式标注，并用基向量映射校验。
 
-17. **矩阵 API 唯一来源（强制）**：项目只保留 `StudyNotes.Homework.Math.LinearAlgebra.Matrix4x4`，禁止再创建 `Mat4x4` 等重复类型或在课程文件中各自实现旋转矩阵工厂。创建接口使用 `Identity`、`CreateTranslation`、`CreateRotationYDegrees`；点与方向分别使用实例 `TransformPoint`、`TransformDirection`，不得在业务/作业代码中公开裸 `Transform(v,w)`；矩阵积使用 `Multiply(left,right)` 并明确表示 `left·right`；`Transpose()` 只表示转置，只有纯旋转时才可作为逆旋转。
+17. **矩阵 API 唯一来源（强制）**：项目只保留 `StudyNotes.Homework.Math.LinearAlgebra.Matrix4x4`，禁止再创建 `Mat4x4` 等重复类型或在课程文件中各自重写轴旋转矩阵。创建接口使用 `Identity`、`CreateTranslation`，轴旋转工厂必须按 `CreateRotation{Axis}Degrees` 命名（当前已有 X/Y）；点与方向分别使用实例 `TransformPoint`、`TransformDirection`，不得在业务/作业代码中公开裸 `Transform(v,w)`；矩阵积使用 `Multiply(left,right)` 并明确表示 `left·right`；`Transpose()` 只表示转置，只有纯旋转时才可作为逆旋转。课程层可以组合这些唯一工厂，但方法名必须写清变换方向、轴空间与角度单位。
 
 ## 项目结构约定
 - **笔记文件**：`docs/数学/{编号}-{中文名}-{英文名}.md`（如 `docs/数学/03-四元数-Quaternion.md`）
@@ -103,6 +103,7 @@
 - 已完成：阶段二 Day 3 ✅ 变换组合与顺序，本轮 3/3 PASS；学生掌握列向量约定下 `T·R` 为先旋转后平移，并修正 localPoint 的 w=1 语义。
 - 已完成：阶段二 Day 4 ✅ 坐标系转换，本轮 4/4 PASS；学生掌握 `worldPoint-cameraPosition` 是方向，以及纯旋转 world→camera 使用 `R⁻¹=Rᵀ`。
 - 已完成：阶段二全部课程 ✅。按用户要求将 `Matrix4x4/Mat4x4` 合并为唯一不可变 `Matrix4x4`，统一语义化方法；第七轮扩展迁移后 6/6 PASS。
-- **下一起点**：阶段三 Day 1 → 欧拉角与旋转顺序，尚未开课。
-- 当前测试入口只启用第九轮 4 项测试，历史测试默认保持停用。
+- **当前起点**：阶段三 Day 1 → 欧拉角与万向锁，第一小节只讲旋转顺序。
+- 正在教学：FPS 相机世界 Y yaw + 局部 X pitch；坏代码写成 `Rx·Ry`，单轴案例通过，`yaw=+90°、pitch=-45°` 组合失败，当前 4/5 PASS。等待学生手算实际前方与 yaw 后局部 X 的世界方向；尚未展示正确乘积，万向锁暂未展开。
+- 当前测试入口只启用第十轮 5 项测试，历史测试默认保持停用。
 - 请继续教学。

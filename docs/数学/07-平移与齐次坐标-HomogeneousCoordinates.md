@@ -170,6 +170,7 @@ world = translation + rot · localOffset
 ```csharp
 Matrix4x4.Identity
 Matrix4x4.CreateTranslation(offset)
+Matrix4x4.CreateRotationXDegrees(angleDegrees)
 Matrix4x4.CreateRotationYDegrees(angleDegrees)
 Matrix4x4.Multiply(left, right)
 

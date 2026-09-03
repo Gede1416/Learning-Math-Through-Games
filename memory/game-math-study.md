@@ -42,7 +42,9 @@ metadata:
 
 **第七轮扩展练习插曲（2026-09-02）**：学生完善旧 `Mat4x4` 后首次单独测试 5/6 PASS。TODO 6 最初旋转 translation 后再加未旋转的 localOffset，同时旧测试骨架混用了相反的 Y 轴旋转方向。统一坐标约定并修正为 `translation + rot·localOffset` 后独立复验 6/6。随后按用户要求将 `Mat4x4` 与 `Matrix4x4` 合并为唯一不可变类型；扩展测试迁到 `07-平移齐次坐标-扩展/Matrix4x4ExtendedTests.cs`，迁移后仍 **6/6 PASS**。
 
-**矩阵 API 统一决策（2026-09-02）**：唯一类型为 `StudyNotes.Homework.Math.LinearAlgebra.Matrix4x4`。创建方法固定为 `Identity`、`CreateTranslation`、`CreateRotationYDegrees`；变换固定为实例 `TransformPoint/TransformDirection`；矩阵积使用 `Multiply(left,right)`；逆旋转显式写 `Transpose()`。删除重复 `Mat4x4`、各课程自建 RotationY、公开裸 `Transform(v,w)` 和含三个不同语义参数的静态 TransformPoint。
+**矩阵 API 统一决策（2026-09-02）**：唯一类型为 `StudyNotes.Homework.Math.LinearAlgebra.Matrix4x4`。创建方法使用 `Identity`、`CreateTranslation` 及名称包含轴与单位的旋转工厂；阶段三 Day 1 已加入 `CreateRotationXDegrees`，与既有 `CreateRotationYDegrees` 共用同一坐标约定。变换固定为实例 `TransformPoint/TransformDirection`；矩阵积使用 `Multiply(left,right)`；逆旋转显式写 `Transpose()`。删除重复 `Mat4x4`、各课程自建轴旋转工厂、公开裸 `Transform(v,w)` 和含三个不同语义参数的静态 TransformPoint。
+
+**正在进行：阶段三 Day 1 → 欧拉角与万向锁（2026-09-03 开课）**。第一小节只处理旋转顺序：FPS 相机使用世界 Y yaw 与相机局部 X pitch，坏代码组合为 `Rx·Ry`。单轴输入均正常，但 `yaw=+90°、pitch=-45°` 时期望前方约 `(0.7071,0.7071,0)`、实际约 `(1,0,0)`；当前第十轮 **4/5 PASS**。等待学生手算最右侧矩阵的作用顺序、yaw 后的局部 X 世界方向，并修正组合；万向锁留到本小节完成后。
 
 **教学类型决策（2026-08-29）**：阶段二 Day 1 使用 `Vector2 + Matrix2x2` 只是为了把错切降维到 X/Y 平面，突出基向量列的几何意义，不代表后续课程改走二维路线。自 Day 2 起恢复项目已有 `Vector3`，引入 `Matrix4x4` 教平移与齐次坐标；避免继续扩展重复的 Vector2 数学库，并逐步对接 Unity 式三维变换。
 
@@ -50,7 +52,7 @@ metadata:
 
 - 阶段一：线性代数基础（向量/点积/叉积/矩阵）✅
 - 阶段二：几何变换（平移旋转缩放/齐次坐标/变换组合）✅
-- 阶段三：三维旋转（欧拉角/四元数/插值）
+- 阶段三：三维旋转（欧拉角/四元数/插值）🚧 当前
 - 阶段四：几何与碰撞（射线平面/AABB-OBB-球/分离轴）
 - 阶段五：物理数学初步（刚体/碰撞响应/积分器）
 
@@ -66,4 +68,4 @@ metadata:
 
 **Why:** 用户希望按 Milo Yip 书单体系系统补齐游戏开发数学，与软件工程学习（[[software-engineering-study]]）同一套教学法。
 
-**How to apply:** 按用户节奏推进，每次聚焦一个概念。阶段二已完成，下一教学起点为阶段三 Day 1 欧拉角与旋转顺序；开始新课前仍保持默认入口只运行第九轮 4 项测试，除非用户明确要求回归测试。
+**How to apply:** 按用户节奏推进，每次聚焦一个概念。当前为阶段三 Day 1 第一小节“欧拉角旋转顺序”，等待学生回答 `Rx·Ry·forward` 的具体结果与 yaw 后局部 X 轴的世界方向；默认入口只运行第十轮 5 项测试。顺序修正后再进入万向锁。

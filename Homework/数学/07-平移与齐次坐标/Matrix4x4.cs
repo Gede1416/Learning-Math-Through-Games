@@ -24,6 +24,20 @@ public readonly record struct Matrix4x4(
         0, 0, 1, offset.Z,
         0, 0, 0, 1);
 
+    // +90° 时 +Y→+Z、+Z→-Y；方法名明确角度单位为度。
+    public static Matrix4x4 CreateRotationXDegrees(float angleDegrees)
+    {
+        float radians = angleDegrees * MathF.PI / 180f;
+        float cosine = MathF.Cos(radians);
+        float sine = MathF.Sin(radians);
+
+        return new Matrix4x4(
+            1, 0, 0, 0,
+            0, cosine, -sine, 0,
+            0, sine, cosine, 0,
+            0, 0, 0, 1);
+    }
+
     // +90° 时 +Z→+X、+X→-Z；方法名明确角度单位为度。
     public static Matrix4x4 CreateRotationYDegrees(float angleDegrees)
     {
