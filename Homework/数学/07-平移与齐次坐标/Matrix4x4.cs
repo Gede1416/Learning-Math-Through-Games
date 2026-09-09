@@ -27,25 +27,37 @@ public readonly record struct Matrix4x4(
     // +90° 时 +Y→+Z、+Z→-Y；方法名明确角度单位为度。
     public static Matrix4x4 CreateRotationXDegrees(float angleDegrees)
     {
-        // TODO（由学生完成）：
-        // 1. 把角度转换成弧度；
-        // 2. 计算 sin/cos；
-        // 3. 按项目坐标约定填写 X 轴旋转矩阵。
-        return Identity; // 临时占位：保证项目可编译，非零角测试应失败。
+        float c, s;
+        GetSinCosByDegrees(angleDegrees, out c, out s);
+        Matrix4x4 res = new(
+            1, 0, 0, 0,
+            0, c, -s, 0,
+            0, s, c, 0,
+            0, 0, 0, 1
+        );
+        return res;
     }
 
     // +90° 时 +Z→+X、+X→-Z；方法名明确角度单位为度。
+
+
     public static Matrix4x4 CreateRotationYDegrees(float angleDegrees)
     {
-        float radians = angleDegrees * MathF.PI / 180f;
-        float cosine = MathF.Cos(radians);
-        float sine = MathF.Sin(radians);
+        float c, s;
+        GetSinCosByDegrees(angleDegrees, out c, out s);
 
         return new Matrix4x4(
-            cosine, 0, sine, 0,
+            c, 0, s, 0,
             0, 1, 0, 0,
-            -sine, 0, cosine, 0,
+            -s, 0, c, 0,
             0, 0, 0, 1);
+    }
+
+    // +90° 时 +X→+Y、+Y→-X，+Z 保持不变；角度单位为度。
+    public static Matrix4x4 CreateRotationZDegrees(float angleDegrees)
+    {
+        // TODO 10.3（由学生完成）：复用 GetSinCosByDegrees，填写 Z 轴旋转矩阵。
+        return Identity; // 未实现占位：非零角的平面旋转测试应失败。
     }
 
     // 返回 left·right；列向量约定下先应用 right，再应用 left。
@@ -94,4 +106,18 @@ public readonly record struct Matrix4x4(
         M00 * value.X + M01 * value.Y + M02 * value.Z + M03 * homogeneousW,
         M10 * value.X + M11 * value.Y + M12 * value.Z + M13 * homogeneousW,
         M20 * value.X + M21 * value.Y + M22 * value.Z + M23 * homogeneousW);
+
+
+    private static void GetSinCosByDegrees(float angleDegrees, out float c, out float s)
+    {
+        float r = DegreesToRadians(angleDegrees);
+        c = MathF.Cos(r);
+        s = MathF.Sin(r);
+    }
+
+    private static float DegreesToRadians(float angleDegrees)
+    {
+        return angleDegrees * MathF.PI / 180;
+    }
+
 }
