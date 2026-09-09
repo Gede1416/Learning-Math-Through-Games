@@ -141,7 +141,7 @@ worldVector = Ry · (Rx · localVector)
 
 游戏场景：接下来让相机支持绕局部前方轴的翻滚（roll）。X/Y 旋转已有实现，现在先由你补齐 Z 轴旋转。工具通过后，导师再给出错误的相机使用代码与问题，届时研究 yaw、pitch、roll 同时参与时的问题。
 
-当前仅进行“学生编写数学工具”步骤。作业位置：`Homework/数学/07-平移与齐次坐标/Matrix4x4.cs` 中的 **`CreateRotationZDegrees`（TODO 10.3）**。预计 5–10 分钟。
+当前仅进行“学生编写数学工具”步骤。作业位置：`MathLibrary/Matrix4x4.cs` 中的 **`CreateRotationZDegrees`（TODO 10.3）**。预计 5–10 分钟。
 
 沿用项目列向量约定，绕 Z 轴只改变 X/Y 分量：
 

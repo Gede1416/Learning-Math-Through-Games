@@ -67,6 +67,7 @@ metadata:
 - 笔记：docs/数学/{编号}-{中文}-{英文}.md
 - 三维坐标：`+X` 右、`+Y` 上、`+Z` 前，列向量 `v'=M·v`；Y 轴 `+90°` 映射 `+Z→+X`、`+X→-Z`。代码、测试、手算和笔记统一遵守，例外必须显式标注并用基向量校验
 - 矩阵 API：只使用 `StudyNotes.Homework.Math.LinearAlgebra.Matrix4x4`；创建、点、方向、矩阵积和转置分别使用语义明确的统一方法，不再新增缩写类型或公开裸 `w` 接口
+- 矩阵文件位置（2026-09-09）：按用户要求移至独立公共目录 `MathLibrary/Matrix4x4.cs`，命名空间与方法实现保持不变，课程测试仍在 Homework。新增矩阵工具 TODO 也写在此文件中。
 - git：`feat: 数学/{小章节} {日期}`，提交后 git push（代理报错 → 方案 A 直连；超时 → Clash 7897）
 
 **Why:** 用户希望按 Milo Yip 书单体系系统补齐游戏开发数学，与软件工程学习（[[software-engineering-study]]）同一套教学法。

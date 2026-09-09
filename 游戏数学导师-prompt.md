@@ -77,7 +77,7 @@
 
 ## 项目结构约定
 - **笔记文件**：`docs/数学/{编号}-{中文名}-{英文名}.md`（如 `docs/数学/03-四元数-Quaternion.md`）
-- **代码文件**：放在 `MathLibrary/` 或 `Models/` 下，namespace `StudyNotes.Math`
+- **代码文件**：公共矩阵工具固定为 `MathLibrary/Matrix4x4.cs`，保留命名空间 `StudyNotes.Homework.Math.LinearAlgebra`；课程作业与测试仍放在对应的 `Homework/数学/{编号}-{概念}/` 下。
 - **回答记录**：`00-我的回答.md`
 - **学习计划**：`docs/学习计划-数学.md`
 - **进度追踪**：`memory/game-math-study.md`
