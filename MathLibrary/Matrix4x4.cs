@@ -56,8 +56,13 @@ public readonly record struct Matrix4x4(
     // +90° 时 +X→+Y、+Y→-X，+Z 保持不变；角度单位为度。
     public static Matrix4x4 CreateRotationZDegrees(float angleDegrees)
     {
-        // TODO 10.3（由学生完成）：复用 GetSinCosByDegrees，填写 Z 轴旋转矩阵。
-        return Identity; // 未实现占位：非零角的平面旋转测试应失败。
+        float c, s;
+        GetSinCosByDegrees(angleDegrees, out c, out s);
+        return new Matrix4x4(
+            c, -s, 0, 0,
+            s, c, 0, 0,
+            0, 0, 1, 0,
+            0, 0, 0, 1);
     }
 
     // 返回 left·right；列向量约定下先应用 right，再应用 left。

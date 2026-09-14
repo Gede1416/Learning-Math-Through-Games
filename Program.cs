@@ -77,7 +77,11 @@ using StudyNotes.Homework.Math.EulerAngles;
 // 来源：docs/数学/10-欧拉角与万向锁-EulerAngles.md
 // 工具关：RotationXFactoryTests.Run(); // 已验收 4/4，默认停用
 // 旋转顺序：EulerAnglesUsageTests.Run(); // 已验收 5/5，默认停用
-// 当前步骤：万向锁准备，由学生实现 CreateRotationZDegrees
+// Z 轴工具：RotationZFactoryTests.Run(); // 已验收 5/5，默认停用
+// 当前步骤：万向锁场景，先回答问题再修整相机俯仰边界
 // ==========================================
 
-RotationZFactoryTests.Run();
+// GimbalLockTests.Run(); // 第十课已验收，默认停用。
+
+// 第十一课：只运行本课；工具通过后自动继续场景测试。
+StudyNotes.Homework.Math.QuaternionBasics.QuaternionLessonTests.Run();
