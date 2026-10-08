@@ -9,8 +9,8 @@ public static class ShipRotation
     public static Quaternion ApplyLocalPitchDegrees(Quaternion currentLocalToWorld, float deltaDegrees)
     {
         var delta = Quaternion.CreateFromAxisAngleDegrees(new Vector3(1, 0, 0), deltaDegrees);
-        // TODO 11.4：此处故意用错组合顺序。先回答问题，再修整。
-        return Quaternion.Multiply(delta, currentLocalToWorld);
+        // 自身轴增量：先在局部空间应用增量，再由当前朝向映射到世界。
+        return Quaternion.Multiply(currentLocalToWorld, delta);
     }
 }
 
