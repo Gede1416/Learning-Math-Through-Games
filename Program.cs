@@ -84,4 +84,7 @@ using StudyNotes.Homework.Math.EulerAngles;
 // GimbalLockTests.Run(); // 第十课已验收，默认停用。
 
 // 第十一课：只运行本课；工具通过后自动继续场景测试。
-StudyNotes.Homework.Math.QuaternionBasics.QuaternionLessonTests.Run();
+// StudyNotes.Homework.Math.QuaternionBasics.QuaternionLessonTests.Run(); // 第11课已验收。
+
+// 第12课：工具通过后自动继续场景；不累计历史课程结果。
+StudyNotes.Homework.Math.RotationConversion.RotationConversionTests.Run();

@@ -106,7 +106,8 @@
 - 已完成：阶段二全部课程 ✅。按用户要求将 `Matrix4x4/Mat4x4` 合并为唯一不可变 `Matrix4x4`，统一语义化方法；第七轮扩展迁移后 6/6 PASS。
 - **已完成**：阶段三 Day 1 第一小节“欧拉角旋转顺序”（2026-09-09）。X 轴工具 4/4 PASS，场景测试 5/5 PASS；学生已完成 `-Z轴 +X轴` 的回答修正、正确乘积 `Ry·Rx` 和过期注释清理。
 - **已完成**：阶段三 Day 1 万向锁，Z 轴工具 5/5、场景 5/5。2026-09-14 学生最终在对话中确认 pitch=0° 可绕 forward 翻滚，概念验收通过，不要求重写旧答案。
-- **当前起点**：阶段三 Day 2 第11课“四元数定义与运算”，完整笔记见 docs/数学/11-四元数定义与运算-Quaternion.md。
-- 新工具留给学生：MathLibrary/Quaternion.cs 中轴角创建、Hamilton 积、方向旋转；场景位于 Homework/数学/11-四元数定义与运算/QuaternionLesson.cs。
-- Program.cs 仅运行第11课：工具 9 项通过后自动进入场景 4 项，学生完成四题与所有 TODO 后统一反馈。不代写、不逐项解锁。
+- **已完成**：2026-10-08 第11课，工具9/9、场景4/4及四题验收通过。已说明非单位轴不是简单放大旋转角，无需重写回答。
+- **当前起点**：阶段三 Day 3 第12课“四元数与矩阵互转”，完整任务包见 docs/数学/12-四元数与矩阵互转-RotationConversion.md。
+- 新工具由学生实现：MathLibrary/Quaternion.cs 中 ToRotationMatrix 与 CreateFromRotationMatrix。只处理单位四元数与纯旋转矩阵，须覆盖180°分支。场景在 Homework/数学/12-四元数与矩阵互转/RotationConversion.cs，修整错误转置。
+- Program.cs 仅运行第12课：工具11项通过后自动进入场景4项，四题与所有TODO完成后统一验收，不代写、不逐项解锁。
 - 请继续教学。
