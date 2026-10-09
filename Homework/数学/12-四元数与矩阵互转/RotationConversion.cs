@@ -9,7 +9,7 @@ public static class ShipRenderBridge
     public static Matrix4x4 CreateShipLocalToWorldRotation(Quaternion orientation)
     {
         // TODO 12.3：故意误以为“换表示方式”需要求逆，回答问题后修整。
-        return orientation.ToRotationMatrix().Transpose();
+        return orientation.ToRotationMatrix();//.Transpose();
     }
 }
 
@@ -42,7 +42,10 @@ public static class RotationConversionTests
             var halfTurn = HalfTurnMatrix(axis);
             Check($"M→q：180°轴{axis}", SameRotation(Quaternion.CreateFromRotationMatrix(halfTurn), halfTurn));
         }
-        Check("M→q：混合旋转", SameRotation(Quaternion.CreateFromRotationMatrix(compositeMatrix), compositeMatrix));
+        Check("M→q：混合旋转",
+            SameRotation(
+                Quaternion.CreateFromRotationMatrix(compositeMatrix), compositeMatrix));
+
         Check("往返：不只比较forward", SameRotation(Quaternion.CreateFromRotationMatrix(composite.ToRotationMatrix()), compositeMatrix));
         Console.WriteLine($"工具：{passed}/{total} PASS");
         if (passed != total)
@@ -67,22 +70,22 @@ public static class RotationConversionTests
     {
         var n = axis.Normalized();
         return new Matrix4x4(
-            2*n.X*n.X-1, 2*n.X*n.Y, 2*n.X*n.Z, 0,
-            2*n.Y*n.X, 2*n.Y*n.Y-1, 2*n.Y*n.Z, 0,
-            2*n.Z*n.X, 2*n.Z*n.Y, 2*n.Z*n.Z-1, 0,
+            2 * n.X * n.X - 1, 2 * n.X * n.Y, 2 * n.X * n.Z, 0,
+            2 * n.Y * n.X, 2 * n.Y * n.Y - 1, 2 * n.Y * n.Z, 0,
+            2 * n.Z * n.X, 2 * n.Z * n.Y, 2 * n.Z * n.Z - 1, 0,
             0, 0, 0, 1);
     }
 
-    private static bool Near(float a, float b) => MathF.Abs(a-b) < 0.0001f;
-    private static bool Near(Vector3 a, Vector3 b) => Near(a.X,b.X) && Near(a.Y,b.Y) && Near(a.Z,b.Z);
+    private static bool Near(float a, float b) => MathF.Abs(a - b) < 0.0001f;
+    private static bool Near(Vector3 a, Vector3 b) => Near(a.X, b.X) && Near(a.Y, b.Y) && Near(a.Z, b.Z);
     private static bool SameRotation(Quaternion q, Matrix4x4 m) =>
-        Near(q.X*q.X+q.Y*q.Y+q.Z*q.Z+q.W*q.W, 1) &&
-        Near(q.TransformDirection(new Vector3(1,0,0)), m.TransformDirection(new Vector3(1,0,0))) &&
-        Near(q.TransformDirection(new Vector3(0,1,0)), m.TransformDirection(new Vector3(0,1,0))) &&
-        Near(q.TransformDirection(new Vector3(0,0,1)), m.TransformDirection(new Vector3(0,0,1)));
+        Near(q.X * q.X + q.Y * q.Y + q.Z * q.Z + q.W * q.W, 1) &&
+        Near(q.TransformDirection(new Vector3(1, 0, 0)), m.TransformDirection(new Vector3(1, 0, 0))) &&
+        Near(q.TransformDirection(new Vector3(0, 1, 0)), m.TransformDirection(new Vector3(0, 1, 0))) &&
+        Near(q.TransformDirection(new Vector3(0, 0, 1)), m.TransformDirection(new Vector3(0, 0, 1)));
     private static bool SameMatrix(Matrix4x4 a, Matrix4x4 b) =>
-        Near(a.M00,b.M00) && Near(a.M01,b.M01) && Near(a.M02,b.M02) && Near(a.M03,b.M03) &&
-        Near(a.M10,b.M10) && Near(a.M11,b.M11) && Near(a.M12,b.M12) && Near(a.M13,b.M13) &&
-        Near(a.M20,b.M20) && Near(a.M21,b.M21) && Near(a.M22,b.M22) && Near(a.M23,b.M23) &&
-        Near(a.M30,b.M30) && Near(a.M31,b.M31) && Near(a.M32,b.M32) && Near(a.M33,b.M33);
+        Near(a.M00, b.M00) && Near(a.M01, b.M01) && Near(a.M02, b.M02) && Near(a.M03, b.M03) &&
+        Near(a.M10, b.M10) && Near(a.M11, b.M11) && Near(a.M12, b.M12) && Near(a.M13, b.M13) &&
+        Near(a.M20, b.M20) && Near(a.M21, b.M21) && Near(a.M22, b.M22) && Near(a.M23, b.M23) &&
+        Near(a.M30, b.M30) && Near(a.M31, b.M31) && Near(a.M32, b.M32) && Near(a.M33, b.M33);
 }
