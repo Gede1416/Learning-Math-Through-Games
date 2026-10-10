@@ -7,6 +7,56 @@ public readonly record struct Quaternion(float X, float Y, float Z, float W)
 {
     public static Quaternion Identity => new(0, 0, 0, 1);
 
+    // TODO 13.1：返回四分量点积；这是标量计算，不是Hamilton积。
+    public static float Dot(Quaternion a, Quaternion b)
+    {
+        return a.X * b.X + a.Y * b.Y + a.Z * b.Z + a.W * b.W;
+    }
+
+    // TODO 13.2：输入保证非零且有限；四个分量同时除以四维长度。
+    public Quaternion Normalized()
+    {
+        float len = MathF.Sqrt(W * W + X * X + Y * Y + Z * Z);
+        return new Quaternion(X / len, Y / len, Z / len, W / len);
+    }
+
+    // TODO 13.3：输入为单位四元数；clamp t至[0,1]、负点积翻转b、线性混合后归一化。
+    public static Quaternion NlerpShortestPath(Quaternion a, Quaternion b, float t)
+    {
+        if (t > 1) return b;
+        if (t < 0) return a;
+        float dot = Dot(a, b);
+        b = dot > 0 ? b : new Quaternion(-b.X, -b.Y, -b.Z, -b.W);
+        float tt = 1.0f - t;
+        float X = a.X * tt + b.X * t;
+        float Y = a.Y * tt + b.Y * t;
+        float Z = a.Z * tt + b.Z * t;
+        float W = a.W * tt + b.W * t;
+        return new Quaternion(X, Y, Z, W).Normalized();
+    }
+
+    // TODO 13.4：单位输入；最短路径球面插值，t限制为[0,1]。
+    // 翻转b后点积限制为[0,1]；dot>0.9995时退回Nlerp以避免近零分母。
+    public static Quaternion SlerpShortestPath(Quaternion a, Quaternion b, float t)
+    {
+        if (t > 1) return b;
+        if (t < 0) return a;
+        float dot = Dot(a, b);
+        b = dot > 0 ? b : new Quaternion(-b.X, -b.Y, -b.Z, -b.W);
+        dot = dot > 0 ? dot : -dot;
+        dot = MathF.Min(dot, 1.0f);
+        dot = MathF.Max(dot, 0.0f);
+        if (dot > 0.9995) return NlerpShortestPath(a, b, t);
+        float w = MathF.Acos(dot);
+        float k0 = MathF.Sin((1 - t) * w) / MathF.Sin(w);
+        float k1 = MathF.Sin(t * w) / MathF.Sin(w);
+        float X = a.X * k0 + b.X * k1;
+        float Y = a.Y * k0 + b.Y * k1;
+        float Z = a.Z * k0 + b.Z * k1;
+        float W = a.W * k0 + b.W * k1;
+        return new Quaternion(X, Y, Z, W).Normalized();
+    }
+
     // TODO 12.1：this 为单位四元数。输出同方向的纯旋转矩阵，无平移/缩放。
     public Matrix4x4 ToRotationMatrix()
     {

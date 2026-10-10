@@ -87,4 +87,7 @@ using StudyNotes.Homework.Math.EulerAngles;
 // StudyNotes.Homework.Math.QuaternionBasics.QuaternionLessonTests.Run(); // 第11课已验收。
 
 // 第12课：工具通过后自动继续场景；不累计历史课程结果。
-StudyNotes.Homework.Math.RotationConversion.RotationConversionTests.Run();
+// StudyNotes.Homework.Math.RotationConversion.RotationConversionTests.Run(); // 第12课已验收。
+
+// 第13课：只统计本课，工具通过后自动进入场景。
+StudyNotes.Homework.Math.RotationInterpolation.RotationInterpolationTests.Run();
