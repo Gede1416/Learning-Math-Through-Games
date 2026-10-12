@@ -90,4 +90,7 @@ using StudyNotes.Homework.Math.EulerAngles;
 // StudyNotes.Homework.Math.RotationConversion.RotationConversionTests.Run(); // 第12课已验收。
 
 // 第13课：只统计本课，工具通过后自动进入场景。
-StudyNotes.Homework.Math.RotationInterpolation.RotationInterpolationTests.Run();
+// StudyNotes.Homework.Math.RotationInterpolation.RotationInterpolationTests.Run(); // 第13课已验收。
+
+// 第14课：只运行本课，工具通过后自动运行射击场景。
+StudyNotes.Homework.Math.RayIntersection.RayIntersectionLessonTests.Run();

@@ -5,6 +5,9 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <!-- 本机未安装 .NET 7 运行时（仅有 8/10）。net7.0 产物需要允许跨主版本向上滚动，否则启动即报
+         "You must install or update .NET to run this application."，导致 F5 调试无法进入。 -->
+    <RollForward>LatestMajor</RollForward>
   </PropertyGroup>
 
 </Project>
