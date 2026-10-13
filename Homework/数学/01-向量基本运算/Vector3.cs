@@ -60,6 +60,25 @@ public struct Vector3
         throw new NotImplementedException("TODO 6: 实现标量乘法");
     }
 
+    public static bool operator >(Vector3 a, Vector3 b)
+    {
+        return a.X > b.X && a.Y > b.Y && a.Z > b.Z;
+    }
+
+    public static bool operator <(Vector3 a, Vector3 b)
+    {
+        return a.X < b.X && a.Y < b.Y && a.Z < b.Z;
+    }
+    public static bool operator >=(Vector3 a, Vector3 b)
+    {
+        return a.X >= b.X && a.Y >= b.Y && a.Z >= b.Z;
+    }
+
+    public static bool operator <=(Vector3 a, Vector3 b)
+    {
+        return a.X <= b.X && a.Y <= b.Y && a.Z <= b.Z;
+    }
+
     public static float Dot(Vector3 a, Vector3 b)
     {
         return a.X * b.X + a.Y * b.Y + a.Z * b.Z;
