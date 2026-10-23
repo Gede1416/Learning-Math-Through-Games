@@ -83,6 +83,9 @@ public struct Vector3
     {
         return a.X * b.X + a.Y * b.Y + a.Z * b.Z;
     }
+    public static Vector3 x => new Vector3(1, 0, 0);
+    public static Vector3 y => new Vector3(0, 1, 0);
+    public static Vector3 z => new Vector3(0, 0, 1);
 
     public override string ToString() => $"({X}, {Y}, {Z})";
 }

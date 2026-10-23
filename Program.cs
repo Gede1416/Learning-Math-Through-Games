@@ -96,4 +96,7 @@ using StudyNotes.Homework.Math.EulerAngles;
 // StudyNotes.Homework.Math.RayIntersection.RayIntersectionLessonTests.Run(); // 第14课已验收。
 
 // 第15课：只统计本课，工具通过后自动进入拾取场景。
-StudyNotes.Homework.Math.AabbIntersection.AabbLessonTests.Run();
+// StudyNotes.Homework.Math.AabbIntersection.AabbLessonTests.Run(); // 第15课已验收。
+
+// 第16课：只运行本课，按API分组，工具通过后自动进入场景。
+StudyNotes.Homework.Math.ObbSat.ObbSatLessonTests.Run();
