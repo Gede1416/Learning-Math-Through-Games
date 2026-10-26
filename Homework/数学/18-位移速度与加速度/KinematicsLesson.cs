@@ -25,7 +25,7 @@ public sealed class ProjectileMotion
     {
         ElapsedSeconds += deltaSeconds;
         // 故意错误：把本帧时长当作从发射起经过的总时间。
-        Position = Kinematics.PositionAtConstantAcceleration(initialPosition, initialVelocity, acceleration, deltaSeconds);
+        Position = Kinematics.PositionAtConstantAcceleration(initialPosition, initialVelocity, acceleration, ElapsedSeconds);
     }
 }
 
