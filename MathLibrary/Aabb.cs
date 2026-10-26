@@ -31,4 +31,15 @@ public readonly record struct Aabb(Vector3 Min, Vector3 Max)
         res = res ? res : other.Min <= this.Max && other.Max > this.Min;
         return res;
     }
+
+    // TODO 17.1：返回实体闭盒中离point最近的点；内部点原样返回。
+    // 每轴限制到[Min,Max]，可复用Math.Clamp；输入在同一坐标空间。
+    public Vector3 ClosestPoint(Vector3 point)
+    {
+        float x = Math.Clamp(point.X, Min.X, Max.X);
+        float y = Math.Clamp(point.Y, Min.Y, Max.Y);
+        float z = Math.Clamp(point.Z, Min.Z, Max.Z);
+        Vector3 res = new Vector3(x, y, z);
+        return res; // 未实现占位。
+    }
 }

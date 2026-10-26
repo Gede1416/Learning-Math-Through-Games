@@ -77,4 +77,22 @@ public readonly record struct Obb(Vector3 Center, Vector3 HalfExtents,
         }
         return true;
     }
+
+    // TODO 17.2：返回实体OBB中离世界点point最近的世界点。
+    // 将point-Center投影到三个单位正交轴，限制到各自正负半尺寸，再重构。
+    public Vector3 ClosestPoint(Vector3 point)
+    {
+        Vector3 D = point - Center;
+        float d0 = Vector3.Dot(D, AxisX);
+        float d1 = Vector3.Dot(D, AxisY);
+        float d2 = Vector3.Dot(D, AxisZ);
+
+        float s0 = Math.Clamp(d0, -HalfExtents.X, HalfExtents.X);
+        float s1 = Math.Clamp(d1, -HalfExtents.Y, HalfExtents.Y);
+        float s2 = Math.Clamp(d2, -HalfExtents.Z, HalfExtents.Z);
+
+        Vector3 Q = Center + AxisX * s0 + AxisY * s1 + AxisZ * s2;
+
+        return Q;
+    }
 }

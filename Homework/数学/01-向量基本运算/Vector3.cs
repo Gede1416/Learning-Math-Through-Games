@@ -59,6 +59,11 @@ public struct Vector3
         return new Vector3(a.X * s, a.Y * s, a.Z * s);
         throw new NotImplementedException("TODO 6: 实现标量乘法");
     }
+    public static Vector3 operator *(float s, Vector3 a)
+    {
+        return new Vector3(a.X * s, a.Y * s, a.Z * s);
+        throw new NotImplementedException("TODO 6: 实现标量乘法");
+    }
 
     public static bool operator >(Vector3 a, Vector3 b)
     {

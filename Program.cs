@@ -99,4 +99,10 @@ using StudyNotes.Homework.Math.EulerAngles;
 // StudyNotes.Homework.Math.AabbIntersection.AabbLessonTests.Run(); // 第15课已验收。
 
 // 第16课：只运行本课，按API分组，工具通过后自动进入场景。
-StudyNotes.Homework.Math.ObbSat.ObbSatLessonTests.Run();
+// StudyNotes.Homework.Math.ObbSat.ObbSatLessonTests.Run(); // 第16课已验收22/22与5/5。
+
+// 第17课：只统计本课，按API分组，工具通过后自动进入爆炸场景。
+// StudyNotes.Homework.Math.SphereBox.SphereBoxLessonTests.Run(); // 代码30/30与5/5；用户跳过剩余数值题。
+
+// 第18课：只运行本课；工具通过后自动运行抛体场景。
+StudyNotes.Homework.Math.KinematicsMotion.KinematicsLessonTests.Run();
