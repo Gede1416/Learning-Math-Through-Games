@@ -105,4 +105,7 @@ using StudyNotes.Homework.Math.EulerAngles;
 // StudyNotes.Homework.Math.SphereBox.SphereBoxLessonTests.Run(); // 代码30/30与5/5；用户跳过剩余数值题。
 
 // 第18课：只运行本课；工具通过后自动运行抛体场景。
-StudyNotes.Homework.Math.KinematicsMotion.KinematicsLessonTests.Run();
+// StudyNotes.Homework.Math.KinematicsMotion.KinematicsLessonTests.Run(); // 第18课已验收20/20、5/5。
+
+// 第19课：只统计当前工具、误差对照与场景，不累计历史成绩。
+StudyNotes.Homework.Math.EulerIntegration.EulerIntegrationLessonTests.Run();
