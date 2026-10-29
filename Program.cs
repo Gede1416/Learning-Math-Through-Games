@@ -108,4 +108,7 @@ using StudyNotes.Homework.Math.EulerAngles;
 // StudyNotes.Homework.Math.KinematicsMotion.KinematicsLessonTests.Run(); // 第18课已验收20/20、5/5。
 
 // 第19课：只统计当前工具、误差对照与场景，不累计历史成绩。
-StudyNotes.Homework.Math.EulerIntegration.EulerIntegrationLessonTests.Run();
+// StudyNotes.Homework.Math.EulerIntegration.EulerIntegrationLessonTests.Run(); // 第19课已验收16/16、5/5。
+
+// 第20课：工具与解析对照通过后自动进入场景；只统计当前课程。
+StudyNotes.Homework.Math.VerletMotion.VerletIntegrationLessonTests.Run();

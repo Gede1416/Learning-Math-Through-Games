@@ -65,6 +65,11 @@ public struct Vector3
         throw new NotImplementedException("TODO 6: 实现标量乘法");
     }
 
+    public static Vector3 operator /(Vector3 a, float s)
+    {
+        return new Vector3(a.X / s, a.Y / s, a.Z / s);
+    }
+
     public static bool operator >(Vector3 a, Vector3 b)
     {
         return a.X > b.X && a.Y > b.Y && a.Z > b.Z;
@@ -91,6 +96,7 @@ public struct Vector3
     public static Vector3 x => new Vector3(1, 0, 0);
     public static Vector3 y => new Vector3(0, 1, 0);
     public static Vector3 z => new Vector3(0, 0, 1);
+    public static Vector3 zero => new Vector3(0, 0, 0);
 
     public override string ToString() => $"({X}, {Y}, {Z})";
 }
